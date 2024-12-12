@@ -39,6 +39,11 @@ public class TaskController {
 		return ResponseEntity.ok(taskService.searchTasks(name, description, projectId, sortBy, sortDirection));
 	}
 
+	@GetMapping("/{taskId}")
+	public ResponseEntity<Task> getTask(@PathVariable Long taskId) {
+		return ResponseEntity.ok(taskService.getTaskById(taskId));
+	}
+
 	@PostMapping
 	public ResponseEntity<Task> createTask(@RequestBody TaskDto taskDto) {
 		return ResponseEntity.ok(taskService.createTask(taskDto));
